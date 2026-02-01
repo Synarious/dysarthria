@@ -1,0 +1,224 @@
+/* ===== Settings Page ===== */
+.settings-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ===== Section ===== */
+.settings-section {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.section-heading svg {
+  color: var(--accent-primary);
+}
+
+/* ===== Settings Card ===== */
+.settings-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.settings-card.danger {
+  border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.settings-info {
+  flex: 1;
+}
+
+.settings-info h3 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.settings-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.file-input-btn {
+  cursor: pointer;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* ===== Messages ===== */
+.success-message,
+.error-message,
+.warning-message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+.success-message {
+  background-color: rgba(0, 255, 136, 0.1);
+  border: 1px solid var(--accent-success);
+  color: var(--accent-success);
+}
+
+.error-message {
+  background-color: rgba(255, 68, 68, 0.1);
+  border: 1px solid var(--accent-danger);
+  color: var(--accent-danger);
+}
+
+.warning-message {
+  background-color: rgba(255, 170, 0, 0.1);
+  border: 1px solid var(--accent-warning);
+  color: var(--accent-warning);
+}
+
+/* ===== Data Summary ===== */
+.data-summary {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: var(--text-secondary);
+}
+
+.summary-value {
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+/* ===== About Card ===== */
+.about-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.about-card h3 {
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.about-card ul {
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+  color: var(--text-secondary);
+}
+
+.about-card li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.about-card li strong {
+  color: var(--text-primary);
+}
+
+.disclaimer {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  margin: var(--spacing-lg) 0;
+  border-left: 3px solid var(--accent-warning);
+}
+
+.disclaimer svg {
+  color: var(--accent-warning);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.disclaimer p {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.tech-info {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--bg-tertiary);
+}
+
+.tech-info h4 {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tech-info p {
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.8;
+}
+
+/* ===== Version Info ===== */
+.version-info {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: var(--spacing-lg);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .settings-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .settings-card .btn {
+    width: 100%;
+  }
+
+  .confirm-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,357 @@
+/* ===== Loudness Meter Page ===== */
+.loudness-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ===== Error Message ===== */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: rgba(255, 68, 68, 0.1);
+  border: 1px solid var(--accent-danger);
+  border-radius: var(--radius-md);
+  color: var(--accent-danger);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ===== Session Stats - Highlight ===== */
+.stat-item.highlight {
+  background-color: var(--bg-tertiary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--accent-success);
+}
+
+.stat-item.highlight .stat-value {
+  color: var(--accent-success);
+}
+
+/* ===== Meter Container ===== */
+.meter-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xxl);
+  padding: var(--spacing-xl);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-lg);
+  min-height: 350px;
+}
+
+/* ===== Volume Meter ===== */
+.volume-meter {
+  width: 120px;
+  height: 300px;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  border: 3px solid var(--bg-secondary);
+}
+
+.volume-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  transform-origin: bottom;
+  background: linear-gradient(to top, var(--accent-success), var(--accent-primary));
+  transition: transform 0.1s ease-out, background-color 0.3s ease;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.target-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--text-primary);
+  z-index: 10;
+}
+
+.target-line::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid var(--text-primary);
+}
+
+.target-label {
+  position: absolute;
+  left: calc(100% + 15px);
+  top: -8px;
+  font-size: 0.7rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.volume-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 15;
+}
+
+/* ===== Breath Exercise Timer ===== */
+.breath-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breath-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-tertiary);
+  border: 4px solid var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.breath-circle.active {
+  border-color: var(--accent-success);
+  box-shadow: var(--glow-success);
+  animation: breathPulse 1s ease-in-out infinite;
+}
+
+@keyframes breathPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.breath-time {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  font-family: 'SF Mono', 'Consolas', monospace;
+}
+
+.breath-circle.active .breath-time {
+  color: var(--accent-success);
+}
+
+.breath-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Feedback Text ===== */
+.feedback-text {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: var(--spacing-md);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ===== Volume Slider ===== */
+.volume-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--accent-danger), var(--accent-warning), var(--accent-success));
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  cursor: pointer;
+  border: none;
+}
+
+.volume-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-sm);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ===== Settings Section ===== */
+.settings-section {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.settings-toggle {
+  width: 100%;
+  justify-content: center;
+}
+
+.sensitivity-control {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--bg-tertiary);
+}
+
+.sensitivity-control label {
+  display: block;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+}
+
+.sensitivity-hint {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: var(--spacing-xs);
+}
+
+.sensitivity-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--accent-primary), var(--accent-warning));
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.sensitivity-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+}
+
+.sensitivity-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  cursor: pointer;
+  border: none;
+}
+
+.settings-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: var(--spacing-md);
+  margin-bottom: 0;
+}
+
+/* ===== Records Card ===== */
+.records-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.records-card h4 {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--accent-warning);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+.record-rank {
+  font-weight: 700;
+  color: var(--accent-warning);
+  width: 40px;
+}
+
+.record-duration {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.record-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .meter-container {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    min-height: auto;
+  }
+
+  .volume-meter {
+    width: 100px;
+    height: 200px;
+  }
+
+  .breath-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .breath-time {
+    font-size: 1.5rem;
+  }
+}
